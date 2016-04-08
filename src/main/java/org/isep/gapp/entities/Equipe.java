@@ -1,4 +1,4 @@
-package org.okongo.gapptest.entities;
+package org.isep.gapp.entities;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package org.okongo.gapptest;
+package org.isep.gapp;
 
 import static org.junit.Assert.*;
 

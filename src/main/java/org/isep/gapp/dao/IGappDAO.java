@@ -1,4 +1,4 @@
-package org.okongo.gapptest.dao;
+package org.isep.gapp.dao;
 
 public interface IGappDAO {
 

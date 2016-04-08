@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="org.okongo.gapptest" />
+	<context:component-scan base-package="org.isep.gapp" />
 	
 		
 </beans:beans>
