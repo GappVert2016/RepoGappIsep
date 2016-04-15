@@ -44,7 +44,7 @@ public class TestJPA {
 					(IRespoAppMetier) context.getBean("metier");
 			List<SessionApp> sep1=metier.listSassionApp();
 			
-			metier.ajouterSessionApp(new SessionApp("APPInfosemestre1", "Description app info 2016", 25));
+			metier.ajouterSessionApp(new SessionApp("APPInfosemestre1", "Description app info 2016", new Utilisateur("toto@gmail.com", "totoLDAP" , "totoNom", "totoPrenom", "etudiantISEP")));
 			metier.ajouterSessionApp(new SessionApp("AppElectrosem2", "Description app electro 2016", new Utilisateur("toto@gmail.com", "totoLDAP" , "totoNom", "totoPrenom", "etudiantISEP")));
 			List<SessionApp> sep2=metier.listSassionApp();
 			assertTrue(sep1.size()+2==sep2.size());
