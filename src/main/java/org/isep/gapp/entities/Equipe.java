@@ -30,9 +30,11 @@ public class Equipe implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Equipe(String nomEquipe) {
+	
+	public Equipe(String nomEquipe, SessionApp sessionAppEquipe) {
 		super();
 		this.nomEquipe = nomEquipe;
+		this.sessionAppEquipe = sessionAppEquipe;
 	}
 	public long getIdEquipe() {
 		return idEquipe;

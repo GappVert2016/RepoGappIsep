@@ -43,11 +43,34 @@ public class TestJPA {
 			IRespoAppMetier metier= 
 					(IRespoAppMetier) context.getBean("metier");
 			List<SessionApp> sep1=metier.listSassionApp();
-			
-			metier.ajouterSessionApp(new SessionApp("APPInfosemestre1", "Description app info 2016", new Utilisateur("toto@gmail.com", "totoLDAP" , "totoNom", "totoPrenom", "etudiantISEP")));
-			metier.ajouterSessionApp(new SessionApp("AppElectrosem2", "Description app electro 2016", new Utilisateur("toto@gmail.com", "totoLDAP" , "totoNom", "totoPrenom", "etudiantISEP")));
+			Utilisateur u = new Utilisateur("toto@gmail.com", "totoLDAP" , "totoNom", "totoPrenom", "etudiantISEP");
+			metier.ajouterUtilisateur(u);
+			metier.ajouterSessionApp(new SessionApp("APPInfosemestre1", "Description app info 2016", u));
+			metier.ajouterSessionApp(new SessionApp("AppElectrosem2", "Description app electro 2016", u));
 			List<SessionApp> sep2=metier.listSassionApp();
 			assertTrue(sep1.size()+2==sep2.size());
+		}
+		catch(Exception e){
+			assertTrue(e.getMessage(),false);
+		}
+	}
+	
+	@Test
+	public void test3() {
+		try {
+			IRespoAppMetier metier= 
+					(IRespoAppMetier) context.getBean("metier");
+			List<Equipe> equ1=metier.listEquipe();
+			Utilisateur u = new Utilisateur("tutu@gmail.com", "totuLDAP" , "tutuNom", "tetePrenom", "etudiantesISEP");
+			metier.ajouterUtilisateur(u);
+			
+			metier.ajouterSessionApp(new SessionApp("APPInfosemestre1", "Description app info 2016", u));
+			SessionApp sa = new SessionApp("AppElectrosem2", "Description app electro 2016", u);
+			metier.ajouterSessionApp(sa);
+			metier.ajouterEquipe(new Equipe("GoupeA1", sa));
+			metier.ajouterEquipe(new Equipe("GoupeB2", sa));
+			List<Equipe> equ2=metier.listEquipe();
+			assertTrue(equ1.size()+2==equ2.size());
 		}
 		catch(Exception e){
 			assertTrue(e.getMessage(),false);
