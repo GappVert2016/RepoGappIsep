@@ -1,6 +1,7 @@
 package org.isep.gapp.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class FamilleCompetence implements Serializable {
@@ -16,17 +18,19 @@ public class FamilleCompetence implements Serializable {
 	private long idFamille;
 	private String nomFamille;
 	@ManyToOne
-	@JoinColumn(name="id_SessionApp")
+	@JoinColumn(name="idSessionApp")
 	private SessionApp sessionApp;
+	@OneToMany(mappedBy="familleCompetence")
+	private Collection<Competence> competences;
+	
+	
 	public FamilleCompetence() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public FamilleCompetence(long idFamille, String nomFamille, SessionApp sessionApp) {
+	public FamilleCompetence(String nomFamille) {
 		super();
-		this.idFamille = idFamille;
 		this.nomFamille = nomFamille;
-		this.sessionApp = sessionApp;
 	}
 	public long getIdFamille() {
 		return idFamille;
@@ -45,6 +49,12 @@ public class FamilleCompetence implements Serializable {
 	}
 	public void setSessionApp(SessionApp sessionApp) {
 		this.sessionApp = sessionApp;
+	}
+	public Collection<Competence> getCompetences() {
+		return competences;
+	}
+	public void setCompetences(Collection<Competence> competences) {
+		this.competences = competences;
 	}
 	
 	

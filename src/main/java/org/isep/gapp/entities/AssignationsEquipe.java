@@ -15,22 +15,17 @@ public class AssignationsEquipe implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idAssignationsEquipe;
 	@ManyToOne
-	@JoinColumn(name="id_utilisateur")
+	@JoinColumn(name="idUtilisateur")
 	private Utilisateur utilisateur;
 	@ManyToOne
-	@JoinColumn(name="id_equipe")
+	@JoinColumn(name="idEquipe")
 	private Equipe equipe;
 	
 	public AssignationsEquipe() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AssignationsEquipe(long idAssignationsEquipe, Utilisateur utilisateur, Equipe equipe) {
-		super();
-		this.idAssignationsEquipe = idAssignationsEquipe;
-		this.utilisateur = utilisateur;
-		this.equipe = equipe;
-	}
+	
 	public long getIdAssignationsEquipe() {
 		return idAssignationsEquipe;
 	}
@@ -49,6 +44,7 @@ public class AssignationsEquipe implements Serializable {
 	public void setEquipe(Equipe equipe) {
 		this.equipe = equipe;
 	}
+	
 	
 
 }

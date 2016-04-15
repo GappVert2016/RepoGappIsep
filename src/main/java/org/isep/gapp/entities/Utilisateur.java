@@ -1,11 +1,13 @@
 package org.isep.gapp.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Utilisateur implements Serializable{
@@ -17,17 +19,22 @@ public class Utilisateur implements Serializable{
 	private String nomUtilisateur;
 	private String prenomUtilisateur;
 	private String role;
+	@OneToMany(mappedBy="utilisateur")
+	private Collection<SessionApp> sessionApps;
+	@OneToMany(mappedBy="utilisateur")
+	private Collection<AssignationsEquipe> assignEquipes;
+	@OneToMany(mappedBy="utilisateur")
+	private Collection<Note> notes;
 	
-	
-	public Utilisateur(long idUtilisateur, String identifiantLDAP, String email, String nomUtilisateur,
+	public Utilisateur(String identifiantLDAP, String email, String nomUtilisateur,
 			String prenomUtilisateur, String role) {
 		super();
-		this.idUtilisateur = idUtilisateur;
 		this.identifiantLDAP = identifiantLDAP;
 		this.email = email;
 		this.nomUtilisateur = nomUtilisateur;
 		this.prenomUtilisateur = prenomUtilisateur;
 		this.role = role;
+		
 	}
 
 	public Utilisateur() {
@@ -82,8 +89,30 @@ public class Utilisateur implements Serializable{
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	
-	
 
+	public Collection<SessionApp> getSessionApps() {
+		return sessionApps;
+	}
+
+	public void setSessionApps(Collection<SessionApp> sessionApps) {
+		this.sessionApps = sessionApps;
+	}
+
+	public Collection<AssignationsEquipe> getAssignEquipes() {
+		return assignEquipes;
+	}
+
+	public void setAssignEquipes(Collection<AssignationsEquipe> assignEquipes) {
+		this.assignEquipes = assignEquipes;
+	}
+
+	public Collection<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(Collection<Note> notes) {
+		this.notes = notes;
+	}
+	
+	
 }

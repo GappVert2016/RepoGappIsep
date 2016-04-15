@@ -35,5 +35,11 @@
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<context:annotation-config></context:annotation-config>
 
-
+	<bean id="dao" class="org.isep.gapp.dao.GappDaoImpl"></bean>
+	<bean id="metier" class="org.isep.gapp.metier.GappMetierImpl">
+		<property name="dao" ref="dao"></property>
+	
+	</bean>
+	
 </beans>
+

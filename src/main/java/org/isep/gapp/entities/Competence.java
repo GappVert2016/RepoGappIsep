@@ -1,6 +1,7 @@
 package org.isep.gapp.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Competence implements Serializable {
@@ -19,22 +21,22 @@ public class Competence implements Serializable {
 	private boolean bloqueCompetence;
 	private long coefficient;
 	@ManyToOne
-	@JoinColumn(name="id_famille")
+	@JoinColumn(name="idFamille")
 	private FamilleCompetence familleCompetence;
+	@OneToMany(mappedBy="comptence")
+	private Collection<Note> notes;
 	
 	public Competence() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Competence(long idCompetence, String nomCompetence, String descriptionCompetence, boolean bloqueCompetence,
-			long coefficient, FamilleCompetence familleCompetence) {
+	public Competence(String nomCompetence, String descriptionCompetence, boolean bloqueCompetence,
+			long coefficient) {
 		super();
-		this.idCompetence = idCompetence;
 		this.nomCompetence = nomCompetence;
 		this.descriptionCompetence = descriptionCompetence;
 		this.bloqueCompetence = bloqueCompetence;
 		this.coefficient = coefficient;
-		this.familleCompetence = familleCompetence;
 	}
 	public long getIdCompetence() {
 		return idCompetence;
@@ -71,6 +73,12 @@ public class Competence implements Serializable {
 	}
 	public void setFamilleCompetence(FamilleCompetence familleCompetence) {
 		this.familleCompetence = familleCompetence;
+	}
+	public Collection<Note> getNotes() {
+		return notes;
+	}
+	public void setNotes(Collection<Note> notes) {
+		this.notes = notes;
 	}
 	
 	

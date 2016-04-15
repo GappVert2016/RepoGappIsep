@@ -1,6 +1,7 @@
 package org.isep.gapp.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class SessionApp implements Serializable {
@@ -17,17 +19,22 @@ public class SessionApp implements Serializable {
 	private String nomSessionApp;
 	private String descriptionApp;
 	@ManyToOne
-	@JoinColumn(name="id_Utilisateur_Respo")
+	@JoinColumn(name="idUtilisateur")
 	private Utilisateur utilisateur;
+	@OneToMany(mappedBy="sessionAppEquipe")
+	private Collection<Equipe> equipes;
+	@OneToMany(mappedBy="sessionApp")
+	private Collection<FamilleCompetence> famicomps;
 	
+	
+
 	public SessionApp() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public SessionApp(long idApp, String nomSessionApp, String descriptionApp, Utilisateur utilisateur) {
+	public SessionApp(String nomSessionApp, String descriptionApp, Utilisateur utilisateur) {
 		super();
-		this.idApp = idApp;
 		this.nomSessionApp = nomSessionApp;
 		this.descriptionApp = descriptionApp;
 		this.utilisateur = utilisateur;
@@ -64,7 +71,23 @@ public class SessionApp implements Serializable {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
+
+	public Collection<Equipe> getEquipes() {
+		return equipes;
+	}
+
+	public void setEquipes(Collection<Equipe> equipes) {
+		this.equipes = equipes;
+	}
+
+	public Collection<FamilleCompetence> getFamicomps() {
+		return famicomps;
+	}
+
+	public void setFamicomps(Collection<FamilleCompetence> famicomps) {
+		this.famicomps = famicomps;
+	}
 	
-	
+		
 
 }

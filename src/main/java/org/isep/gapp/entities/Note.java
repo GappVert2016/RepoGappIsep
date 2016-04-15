@@ -20,10 +20,10 @@ public class Note implements Serializable {
 	private String commentaire;
 	private Date dateNote;
 	@ManyToOne
-	@JoinColumn(name="id_Competence")
+	@JoinColumn(name="idCompetence")
 	private Competence comptence;
 	@ManyToOne
-	@JoinColumn(name="id_equipe")
+	@JoinColumn(name="idEquipe")
 	private Equipe equipe;
 	@ManyToOne
 	@JoinColumn(name="id_utiisateur")
@@ -33,16 +33,13 @@ public class Note implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Note(long idNote, long valeurNote, String commentaire, Date dateNote, Competence comptence, Equipe equipe,
-			Utilisateur utilisateur) {
+	public Note(long valeurNote, String commentaire, Date dateNote, Competence comptence, Equipe equipe) {
 		super();
-		this.idNote = idNote;
 		this.valeurNote = valeurNote;
 		this.commentaire = commentaire;
 		this.dateNote = dateNote;
 		this.comptence = comptence;
 		this.equipe = equipe;
-		this.utilisateur = utilisateur;
 	}
 	public long getIdNote() {
 		return idNote;
